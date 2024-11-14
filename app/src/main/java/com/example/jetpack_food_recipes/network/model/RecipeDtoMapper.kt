@@ -1,24 +1,24 @@
 package com.example.jetpack_food_recipes.network.model
 
 import com.example.jetpack_food_recipes.domain.model.Recipe
-import com.example.jetpack_food_recipes.domain.util.EntityMapper
+import com.example.jetpack_food_recipes.domain.util.DomainMapper
 
-class RecipeDTOMapper : EntityMapper<RecipeDto, Recipe> {
-    override fun mapFromEntity(entity: RecipeDto): Recipe {
+class RecipeDtoMapper : DomainMapper<RecipeDto, Recipe> {
+    override fun mapToDomainModel(model: RecipeDto): Recipe {
         return Recipe(
-            id = entity.pk,
-            title = entity.title,
-            featuredImage = entity.featuredImage,
-            rating = entity.rating,
-            publisher = entity.publisher,
-            sourceUrl = entity.sourceUrl,
-            dateAdded = entity.dateAdded,
-            dateUpdated = entity.dateUpdated,
-            ingredients = entity.ingredients
+            id = model.pk,
+            title = model.title,
+            featuredImage = model.featuredImage,
+            rating = model.rating,
+            publisher = model.publisher,
+            sourceUrl = model.sourceUrl,
+            dateAdded = model.dateAdded,
+            dateUpdated = model.dateUpdated,
+            ingredients = model.ingredients
         )
     }
 
-    override fun mapToEntity(domainModel: Recipe): RecipeDto {
+    override fun mapFromDomainModel(domainModel: Recipe): RecipeDto {
         return RecipeDto(
             pk = domainModel.id,
             title = domainModel.title,
@@ -33,10 +33,10 @@ class RecipeDTOMapper : EntityMapper<RecipeDto, Recipe> {
     }
 
     fun fromEntityList(initial: List<RecipeDto>): List<Recipe> {
-        return initial.map { mapFromEntity(it) }
+        return initial.map { mapToDomainModel(it) }
     }
 
     fun toEntityList(initial: List<Recipe>): List<RecipeDto> {
-        return initial.map { mapToEntity(it) }
+        return initial.map { mapFromDomainModel(it) }
     }
 }
