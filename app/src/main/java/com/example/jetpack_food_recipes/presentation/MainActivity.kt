@@ -1,4 +1,4 @@
-package com.example.jetpack_food_recipes
+package com.example.jetpack_food_recipes.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

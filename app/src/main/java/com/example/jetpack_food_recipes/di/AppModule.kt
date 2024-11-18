@@ -1,7 +1,7 @@
 package com.example.jetpack_food_recipes.di
 
 import android.content.Context
-import com.example.jetpack_food_recipes.BaseApp
+import com.example.jetpack_food_recipes.presentation.BaseApp
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
